@@ -1,0 +1,34 @@
+						Variables in Data
+
+
+Date ---- Date of Game
+
+Away ---- Away Team
+
+Home ---- Home Team
+
+** All numerical variables are contructed subtracting the away teams metrics from the home team metrics.
+
+PTS% ---- Current points divided by maximum number of possible points
+
+SRS ---- Simple Rating System metric, A standardized metric of the performance of the team in regards to the whole league with 0 as the average
+
+SOS ---- Strength of Schedule metric, A standardized metric of the strength of the teams played against with 0 as the average
+
+GF/G ---- The average goals per game
+
+GA/G ---- the average goals against per game
+
+PP% ---- power play goals divided by powerplay oppportunities
+
+PK% ---- power play goals against divided by penalties
+
+SV% ---- percentage of shots saved
+
+S% ---- percentage of shots scored
+
+** Target Metric
+
+Win ---- binary target metric 1 (Home Win) or 0 (Away Win) 
+
+
