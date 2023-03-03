@@ -25,7 +25,7 @@ def web_scrap():
     teams = ["ANA", "ARI", 'BOS', "BUF", "CAR", "CBJ", 'CGY', "CHI", "COL", "DAL", "DET", "EDM", "FLA", "LAK", "MIN", "MTL",
              "NJD", "NSH", "NYI", "NYR", "OTT", "PHI", "PIT", "SEA", "SJS", "STL", "TBL", "TOR", "VAN", "VEG", "WPG", "WSH"]
 
-    args = {'browser': 'chrome', 'desktop': True, 'platform': 'windows'}
+    args = {'browser': 'firefox', 'desktop': True, 'platform': 'windows'}
 
     print(len(teams))
     for team in teams:
@@ -43,6 +43,6 @@ def web_scrap():
 
         final = final.append(dat, ignore_index=True)
         print(f'{team} done!')
-        time.sleep(10)
+        time.sleep(60)
 
     return final
