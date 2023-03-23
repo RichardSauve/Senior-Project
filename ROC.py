@@ -37,7 +37,7 @@ for i, r in nhl.iterrows():
     y_score.append(p)
 
 fpr, tpr, thresholds = roc_curve(y_true, y_score)
-fpr1, tpr1, threholds1, = roc_curve(y_test, y_pred)
+fpr1, tpr1, thresholds1, = roc_curve(y_test, y_pred)
 
 roc_auc = auc(fpr, tpr)
 roc_auc1 = auc(fpr1, tpr1)

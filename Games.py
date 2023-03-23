@@ -26,7 +26,7 @@ def todays_games():
     today = str(date.today())
     print("Today date is: ", today)
 
-    args = {'browser': 'chrome', 'desktop': True, 'platform': 'windows'}
+    args = {'browser': 'firefox', 'desktop': True, 'platform': 'windows'}
 
     scraper = cs.create_scraper(browser=args)
     response = scraper.get(url)

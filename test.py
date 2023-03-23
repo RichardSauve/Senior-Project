@@ -1,29 +1,54 @@
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.datasets import make_classification
-from sklearn.model_selection import train_test_split
+import numpy as np
+from sklearn.model_selection import train_test_split, GridSearchCV, validation_curve
+import matplotlib.pyplot as plt
+from itertools import compress
+from sklearn.metrics import roc_curve, auc
 
-data = pd.read_excel('games_data.xlsx')
-data = data.dropna()
-y = data['Win']
-X = data[['PTS%', 'SRS', 'SOS', 'GF/G', 'GA/G', 'PP%', 'PK%', 'SV%', 'S%']]
+# data = pd.read_excel('games_data.xlsx')
+# data = data.dropna()
+# y = data['Win']
+# X = data[['PTS%', 'SRS', 'SOS', 'GF/G', 'GA/G', 'PP%', 'PK%', 'SV%', 'S%']]
+#
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=91)
+#
+# model = Sequential()
+# model.add(Dense(50, activation='relu', input_dim=9))
+# model.add(Dense(1, activation='sigmoid'))
+#
+# model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+#
+# history = model.fit(X_train, y_train, epochs=100, batch_size=50, validation_data=(X_test, y_test))
+#
+# plt.plot(history.history['loss'])
+# plt.plot(history.history['val_loss'])
+# plt.title('model loss')
+# plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'validation'], loc='upper left')
+# plt.show()
+#
+# plt.plot(history.history['accuracy'])
+# plt.plot(history.history['val_accuracy'])
+# plt.title('model accuracy')
+# plt.ylabel('accuracy')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'validation'], loc='upper left')
+# plt.show()
+#
+# score = model.evaluate(X_test, y_test)
+# print(f"Test loss: {score[0]}")
+# print(f"Test accuracy: {score[1]}")
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+data = pd.read_excel('Main.xlsx', sheet_name='sheet1', header=[2])
 
+fpr, tpr, thresholds = roc_curve(data['home_win'], data['home_prob'])
+roc_auc = auc(fpr, tpr)
 
-model = Sequential()
-model.add(Dense(128, activation='relu', input_dim=9))
-model.add(Dense(1, activation='sigmoid'))
-
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-
-model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
-
-print(model.predict(X_test))
-
-score = model.evaluate(X_test, y_test)
-print(f"Test loss: {score[0]}")
-print(f"Test accuracy: {score[1]}")
+print(roc_auc)
 

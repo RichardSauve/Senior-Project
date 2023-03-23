@@ -1,0 +1,6 @@
+K : 6
+Home Team Advantage (HTA) : 50
+Margin of Victory Slope (MVM_A) : 0.6686
+Margin of Victory Intercept (MVM_B) : 0.8048
+Auto Correlation Factor (ACF) : 2.05
+Auto Correlation Multiplier (ACM) : 0.001
