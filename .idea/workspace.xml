@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34c24faf-aa9c-45fd-abba-03adc8be6cb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Probability.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/optimize.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elo_test.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Elo_test.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Games.py" beforeDir="false" afterPath="$PROJECT_DIR$/Games.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Probability.py" beforeDir="false" afterPath="$PROJECT_DIR$/Probability.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ROC.py" beforeDir="false" afterPath="$PROJECT_DIR$/ROC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games_data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/games_data.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimize.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimize.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,9 +170,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.optimize" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.Base" />
         <item itemvalue="Python.ROC" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.Basic_Web_Scrap" />
       </list>
     </recent_temporary>

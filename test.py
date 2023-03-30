@@ -1,3 +1,5 @@
+import datetime
+
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
@@ -44,11 +46,8 @@ from sklearn.metrics import roc_curve, auc
 # print(f"Test loss: {score[0]}")
 # print(f"Test accuracy: {score[1]}")
 
+timenow = pd.to_datetime(datetime.datetime.now(), format='%Y-%m-%d') - pd.to_datetime('2022-10-06', format='%Y-%m-%d')
 
-data = pd.read_excel('Main.xlsx', sheet_name='sheet1', header=[2])
 
-fpr, tpr, thresholds = roc_curve(data['home_win'], data['home_prob'])
-roc_auc = auc(fpr, tpr)
-
-print(roc_auc)
+print(timenow)
 
