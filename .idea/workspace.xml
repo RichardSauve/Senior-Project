@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="34c24faf-aa9c-45fd-abba-03adc8be6cb8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Probability.py" beforeDir="false" afterPath="$PROJECT_DIR$/Probability.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/games_data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/games_data.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimize.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimize.py" afterDir="false" />
@@ -61,7 +62,7 @@
       <recent name="C:\Users\Richard\Desktop\SeniorProject" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.optimize">
+  <component name="RunManager" selected="Python.test">
     <configuration name="Base" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Senior-Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,9 +170,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.optimize" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.Base" />
+        <item itemvalue="Python.optimize" />
         <item itemvalue="Python.ROC" />
         <item itemvalue="Python.Basic_Web_Scrap" />
       </list>

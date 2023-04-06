@@ -11,19 +11,8 @@ from bs4 import BeautifulSoup as bs
 warnings.filterwarnings('ignore')
 
 ################
-def probability(K, HTA, MVM_A, MVM_B, ACF, ACM, wb_name, sheet_num, yest_games):
-
-
-    #################
-    data = pd.DataFrame(columns=['Team', 'Elo'])
-    wb = openpyxl.load_workbook('Elo_test.xlsx')
-    ws = wb.active
-
-    for j in range(2, 34):
-        data = data.append({'Team': ws[f'A{j}'].value, 'Elo': ws[f'B{j}'].value}, ignore_index=True)
-
-    elo = data.set_index('Team', drop=True).to_dict()['Elo']
-
+def probability(K, HTA, MVM_A, MVM_B, ACF, ACM, wb_name, sheet_num, yest_games, elo_sub):
+    elo = elo_sub.copy()
     #################
 
     wb1 = openpyxl.load_workbook(f'{wb_name}')
@@ -34,10 +23,6 @@ def probability(K, HTA, MVM_A, MVM_B, ACF, ACM, wb_name, sheet_num, yest_games):
 
     header = ['Home_team', 'Away_team', 'home_prob', 'home_win']
     ws1.append(header)
-
-    #################
-
-    ##################
 
     #######################
     for game in yest_games:

@@ -10,11 +10,11 @@ from sklearn.metrics import roc_curve, auc
 from Probability import probability
 
 k = np.arange(5.5, 6.5, 0.01)
-hta = np.round(np.arange(25., 75., 0.1), 2)
-mvma = np.arange(0.6086, 0.7386, 0.02)
-mvmb = np.arange(0.7448, 0.8748, 0.02)
+hta = np.round(np.arange(-500., 500., 10), 2)
+mvma = np.round(np.arange(0.1, 1.1, 0.01), 2)
+mvmb = np.round(np.arange(0.5, 1.1, 0.01), 2)
 acf = np.arange(2.02, 2.09, 0.01)
-acm = np.arange(0.0007, 0.0013, 0.0001)
+acm = np.round(np.arange(0.0007, 0.0013, 0.0001), 4)
 
 URL = 'https://www.hockey-reference.com/leagues/NHL_2023_games.html'
 
@@ -42,19 +42,31 @@ for i in range(175):
                                text, t.find_all('td')[3].text))
 
 a = 6
-# b = 50
+b = 50
 c = 0.6686
 d = 0.8048
 e = 2.05
-f = 0.001
+# f = 0.001
+
 
 def my_func():
     sheet_num = 1
     scores = []
 
-    for b in hta:
+    data = pd.DataFrame(columns=['Team', 'Elo'])
+    wb = openpyxl.load_workbook('Elo_test.xlsx')
+    ws = wb.active
+
+    for j in range(2, 34):
+        data = data.append({'Team': ws[f'A{j}'].value, 'Elo': ws[f'B{j}'].value}, ignore_index=True)
+
+    elo = data.set_index('Team', drop=True).to_dict()['Elo']
+
+    wb.close()
+
+    for f in acm:
         probability(K=a, HTA=b, MVM_A=c, MVM_B=d, ACF=e, ACM=f, wb_name=wb_name, sheet_num=sheet_num,
-                    yest_games=yest_games)
+                    yest_games=yest_games, elo_sub=elo)
 
         data = pd.read_excel('Main.xlsx', sheet_name=f'sheet{sheet_num}', header=[2])
 
@@ -63,15 +75,15 @@ def my_func():
         fpr, tpr, thresholds = roc_curve(data['home_win'], data['home_prob'])
         roc_auc = auc(fpr, tpr)
         scores.append(roc_auc)
-        print(f'{b} Done!')
+        print(f'{f} Done!')
 
     print(max(scores), scores.index(max(scores)) + 1)
 
-    plt.plot(hta, scores, marker = 'o', color = 'red')
-    plt.xlabel('HTA')
+    plt.plot(acm, scores, marker = 'o', color = 'red')
+    plt.xlabel('ACM')
     plt.ylabel('AUC score')
-    plt.title('HTA  -  AUC Scores')
-    plt.savefig('HTA_AUC')
+    plt.title('ACM  -  AUC Scores')
+    plt.savefig('ACM_AUC')
     plt.show()
     return
 
