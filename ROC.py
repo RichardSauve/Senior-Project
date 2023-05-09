@@ -5,15 +5,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
-data = pd.read_excel('games_data.xlsx')
-data = data.dropna()
-y = data['Win']
-X = data[['PTS%', 'SRS', 'SOS', 'GF/G', 'GA/G', 'PP%', 'PK%', 'SV%', 'S%']]
+# data = pd.read_excel('games_data.xlsx')
+# data = data.dropna()
+# y = data['Win']
+# X = data[['PTS%', 'SRS', 'SOS', 'GF/G', 'GA/G', 'PP%', 'PK%', 'SV%', 'S%']]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-model = LogisticRegression()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# model = LogisticRegression()
+# model.fit(X_train, y_train)
+# y_pred = model.predict(X_test)
 
 nhl = pd.read_csv('nhl_elo.csv')
 col = nhl.columns
@@ -37,13 +37,13 @@ for i, r in nhl.iterrows():
     y_score.append(p)
 
 fpr, tpr, thresholds = roc_curve(y_true, y_score)
-fpr1, tpr1, thresholds1, = roc_curve(y_test, y_pred)
+# fpr1, tpr1, thresholds1, = roc_curve(y_test, y_pred)
 
 roc_auc = auc(fpr, tpr)
-roc_auc1 = auc(fpr1, tpr1)
+# roc_auc1 = auc(fpr1, tpr1)
 
 plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
-plt.plot(fpr1, tpr1, color='blue', lw = 2, label='ROC curve (area = %0.2f)' % roc_auc1)
+# plt.plot(fpr1, tpr1, color='blue', lw = 2, label='ROC curve (area = %0.2f)' % roc_auc1)
 plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
 plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.05])
@@ -51,5 +51,5 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Receiver Operating Characteristic (ROC) Curve')
 plt.legend(loc="lower right")
-plt.savefig('ROC')
+plt.savefig('ROC_new')
 plt.show()

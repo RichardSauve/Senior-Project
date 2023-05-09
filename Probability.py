@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import openpyxl
@@ -30,8 +31,8 @@ def probability(K, HTA, MVM_A, MVM_B, ACF, ACM, wb_name, sheet_num, yest_games, 
         AC = ACF / ((abs(elo_diff) * ACM) + ACF)
         prob_a = 1. / (np.power(10, elo_diff) + 1)
         prob_b = 1. - prob_a
-        MoV = int(game[3]) - int(game[1]) * AC
-        MVM = MVM_A * np.log(abs(MoV)) + MVM_B
+        MoV = int(game[3]) - int(game[1])
+        MVM = (MVM_A * np.log(abs(MoV)) + MVM_B) * AC
         # print(game[2], prob_a, ':', game[0], prob_b)
         if MoV > 0:
             TWa = 1.
@@ -52,8 +53,24 @@ def probability(K, HTA, MVM_A, MVM_B, ACF, ACM, wb_name, sheet_num, yest_games, 
 
         #######################
 
-    wb1.save('Main.xlsx')
+    wb1.save(f'{wb_name}')
     wb1.close()
 
      ###################
 
+
+# Code block to print Elo distributions
+
+# x = np.linspace(0, 250, 251)
+# elo_diff = - x / 400
+# prob_a = 1. / (np.power(10, elo_diff) + 1)
+# prob_b = 1 - prob_a
+# plt.style.use('fivethirtyeight')
+# plt.plot(x, prob_a)
+# plt.title('Elo Probability Distributions')
+# plt.ylabel('Probability of Outcome')
+# plt.xlabel('Elo Difference')
+# plt.plot(x, prob_b)
+# plt.tight_layout()
+# plt.savefig('Elo_system')
+# plt.show()
